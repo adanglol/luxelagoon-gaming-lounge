@@ -2,11 +2,112 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Luxelagoon Gaming Lounge - Luxurious Escapes, Endless Adventures</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <!-- Favicon -->
+    <link rel="icon" href="Assets\images\diamond.png" type="">
+    <!-- Custom CSS -->
+
+    <title>Luxe Lagoon Gaming Lounge || Landing Page</title>
 </head>
 <body>
-    <h1>LUXE</h1>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Luxe Lagoon</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#about">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#services">Services</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#contact">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+
+    <section class="jumbotron text-center" style="position: relative; overflow: hidden;">
+        <video autoplay muted loop id="video-bg" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
+            <source src="Assets/images/roulette.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
     
+        <div class="container" style="position: relative; z-index: 1;">
+            <h1 class="display-4">Welcome to Luxe Lagoon Gaming Lounge</h1>
+            <p class="lead">Experience Luxury and Excitement Like Never Before</p>
+            <a href="#about" class="btn btn-primary btn-lg">Learn More</a>
+            <a href="Lounge/index.html" class="btn btn-primary btn-lg">Enter</a>
+        </div>
+    </section>
+    
+
+    <!-- About Section -->
+    <section id="about" class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <img src="Assets\images\About.jpg" class="img-fluid rounded" alt="About Luxe Lagoon">
+                </div>
+                <div class="col-lg-6">
+                    <h2 class="display-4">About Us</h2>
+                    <p class="lead">Discover the ultimate gaming experience at Luxe Lagoon, where luxury meets limitless play. Our gaming lounge offers a variety of games and a relaxing ambiance. Experience the luxury and excitement today!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="bg-light py-5">
+        <div class="container">
+            <h2 class="display-4 text-center">Our Services</h2>
+            <br>
+            <div class="row">
+                <div class="col-md-4">
+                    <img src="Assets\images\Slots.jpg" class="img-fluid rounded mb-3" alt="Service 1">
+                    <h4 class="mb-2">Slots</h4>
+                    <p>In a game of testing your luck. Matching alike symbols is aim of the game. The more matches the higher the rewards! </p>
+                </div>
+                <div class="col-md-4">
+                    <img src="Assets\images\poker.jpg" class="img-fluid rounded mb-3" alt="Service 2">
+                    <h4 class="mb-2">Texas Hold Em</h4>
+                    <p>Two card poker. In which you can outwit your opponent or outhand them. Better to go big or go home!</p>
+                </div>
+                <div class="col-md-4">
+                    <img src="Assets\images\rouimage.jpg" class="img-fluid rounded mb-3" alt="Service 3">
+                    <h4 class="mb-2">Roulette</h4>
+                    <p>Feeling lucky bet against the wheel and choose a number for ball to land on to hopefully rake in some big rewards!</p>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-5">
+        <div class="container text-center">
+            <h2 class="display-4">Contact Us</h2>
+            <p class="lead">Need Inquires or Questions? Reach out to us!</p>
+            <a href="mailto:adraging@gmail.com" class="btn btn-primary btn-lg">Email Us</a>
+        </div>
+    </section>
+
+    <!-- Bootstrap JavaScript and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.8/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 </body>
 </html>
