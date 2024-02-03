@@ -49,6 +49,10 @@ class ConfigureScene extends Phaser.Scene {
 
         // Back of the card
         this.load.image('backOfCard', '../Assets/gameAssets/images/LargeCards/Back Blue 1.png');
+        this.load.image('redCard', '../Assets/gameAssets/images/LargeCards/Back Red 1.png');
+
+
+
         // C:\Users\adrag\OneDrive\Desktop\Projects\luxelagoon-gaming-lounge\Assets\gameAssets\images\LargeCards\Back Blue 1.png
         // Adding card images
         this.load.image('ClubsA', '../Assets/gameAssets/images/LargeCards/Clubs 1.png');
@@ -105,7 +109,11 @@ class ConfigureScene extends Phaser.Scene {
         this.load.image('Spades10', '../Assets/gameAssets/images/LargeCards/Spades 10.png');
         this.load.image('SpadesJ', '../Assets/gameAssets/images/LargeCards/Spades 11.png');
         this.load.image('SpadesQ', '../Assets/gameAssets/images/LargeCards/Spades 12.png');
+        this.load.image('SpadesK', '../Assets/gameAssets/images/LargeCards/Spades 13.png');
+
+        // Background image blackjack
         
+        this.load.image('blackjackBackground', '../Assets/gameAssets/images/table.jpg');
 
        
 
@@ -297,22 +305,23 @@ class Roulette extends ConfigureScene {
 class Blackjack extends ConfigureScene {
     constructor() {
         super('Blackjack');
-        // this.deck = [];
-        // this.cardSprites = {};
-        // this.suits = ['Clubs','Diamond','Hearts','Spades'];
-        // this.ranks = [1,2,3,4,5,6,7,8,9,10,'J','Q','K'];
 
     }
     create(){
-        this.add.text(this.scale.width * .4,this.scale.height * .05,'Blackjack',{fontFamily: 'Ultra',fontSize: '4em',color: 'white'});
+        setCustomCursor(this,blueCursor);
 
-        // var ranks = ['A','2','3','4','5','6','7','8','9','10','J','Q','K'];
+        // const blackjackBackground = this.add.sprite(0,0,'blackjackBackground');
 
-        // // concat ranks 4 times to create a deck of cards 52 cards
-        // for (var i = 0; i < 4; i++) {
-        //     this.deck = this.deck.concat(ranks);
-        // }
-        // console.log(this.deck);
+        const blackjackBackground = this.add.sprite(0,0,'blackjackBackground')
+        blackjackBackground.setOrigin(0,0);
+        blackjackBackground.setScale(2);
+
+
+
+
+        const blackJackText = this.add.text(this.scale.width * .4,this.scale.height * .03,'Blackjack',{fontFamily: 'Ultra',fontSize: '5em',color: 'black'});
+
+
 
         // Deal 2 Cards to the player
         var playerHand = [this.deck.splice(this.getRandomCardIndex(),1),this.deck.splice(this.getRandomCardIndex(),1)];
@@ -320,10 +329,6 @@ class Blackjack extends ConfigureScene {
         // console.log(playerHand[0])
         console.log(this.deck);
         
-        // for (var i = 0; i < playerHand.length; i++) {
-        //     console.log(playerHand[i]);
-        //     this.add.sprite(0,0,playerHand[i]);
-        // }
 
         // Set the initial X coordinate for the first card
         var initialX = this.scale.width * .45;
@@ -334,30 +339,81 @@ class Blackjack extends ConfigureScene {
             console.log(playerHand[i]);
         }
 
-        var backCard = this.add.sprite(this.scale.width * .2, this.scale.height * .8, 'backOfCard');
-
 
 
         // Deal 2 Cards to the dealer
         var dealerHand = [this.deck.splice(this.getRandomCardIndex(),1),this.deck.splice(this.getRandomCardIndex(),1)];
-        // console.log(dealerHand);
-        // console.log(this.deck);
+        console.log(dealerHand);
+        console.log(this.deck);
 
-        // this.add.sprite(0,0,'ClubsA');
-        // console.log(this.listCards);
-        // console.log(this.listCards.length);
 
-        // // Create a sprite for each card in the deck
-        // for (var i = 0; i < this.deck.length; i++) {
-        //     this.cardSprites[this.deck[i]] = this.add.sprite(0,0,this.deck[i]);
-        // }
+        // Set the initial X coordinate for the first card
+        var initialX = this.scale.width * .45;
 
+        for (var i = 0; i < dealerHand.length; i++) {
+            // Display each card sprite with a horizontal spacing
+            var cardSprite = this.add.sprite(initialX + i * 100, this.scale.height * .3, dealerHand[i]);
+            console.log(dealerHand[i]);
+        }
+
+        var hitCard = this.add.sprite(this.scale.width * .8, this.scale.height * .8, 'backOfCard');
+        var standCard = this.add.sprite(this.scale.width * .9, this.scale.height * .8, 'backOfCard');
+
+
+
+        
+        hitCard.setInteractive();
+        hitCard.on('pointerover', () => {
+            setCustomCursor(this,redCursor);
+            hitCard.setTexture('redCard');
+            blackJackText.text = 'Hit?';
+        });
+        hitCard.on('pointerout', () => {
+            setCustomCursor(this,blueCursor);
+            hitCard.setTexture('backOfCard');
+            blackJackText.text = 'Blackjack';
+        });
+        hitCard.on('pointerdown', () => {
+            console.log('hit');
+        });
+
+        standCard.setInteractive();
+        standCard.on('pointerover', () => {
+            setCustomCursor(this,redCursor);
+            standCard.setTexture('redCard');
+            blackJackText.text = 'Stay?';
+        });
+        standCard.on('pointerout', () => {
+            setCustomCursor(this,blueCursor);
+            standCard.setTexture('backOfCard');
+            blackJackText.text = 'Blackjack';
+        });
+        standCard.on('pointerdown', () => {
+            console.log('split');
+        });
+
+
+     
 
     }
     getRandomCardIndex(){
         return Math.floor(Math.random() * this.deck.length);
     }
-    update(){}
+    hit(){
+
+    }
+    over(){
+
+    }
+    stand(){
+
+    }
+    outcome(){
+
+    }
+    update(){
+
+    }
 
 
 }
