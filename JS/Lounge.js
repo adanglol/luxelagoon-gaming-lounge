@@ -128,7 +128,7 @@ class ConfigureScene extends Phaser.Scene {
               families: ['Ultra'],
             },
             active: () => {
-              game.scene.start('Lounge');
+              game.scene.start('Menu');
             },
           });
     }
@@ -139,9 +139,9 @@ class ConfigureScene extends Phaser.Scene {
 // Possible Fonts
 // Lobster,Roboto SLab , Bangers, luck guy
 
-class Lounge extends ConfigureScene {
+class Menu extends ConfigureScene {
     constructor() {
-        super('Lounge');
+        super('Menu');
     }
     create(){
         setCustomCursor(this,blueCursor);
@@ -168,30 +168,61 @@ class Lounge extends ConfigureScene {
         loungeMusic.play();
         const loungeText = this.add.text(this.scale.width * .04,this.scale.height * .05,'LuxeLagoon Gaming Lounge',{fontFamily: 'Ultra',fontSize: '6em',color: 'white'});
 
+
+        
         // Roulette Button
-        const rouletteButton = this.add.text(this.scale.width * .4,this.scale.height * .3,'Roulette',{fontFamily: 'Ultra',fontSize: '4em',color: 'white'});
-        rouletteButton.setInteractive();
-        rouletteButton.on('pointerdown', () => {
+        const enterButton = this.add.text(this.scale.width * .4,this.scale.height * .3,'Enter',{fontFamily: 'Ultra',fontSize: '4em',color: 'white'});
+        enterButton.setInteractive();
+        enterButton.on('pointerdown', () => {
             loungeMusic.stop();
-            this.scene.start('Roulette');
+            this.scene.start('Lounge');
         });
 
-        rouletteButton.on('pointerover', () => {
-            rouletteButton.setColor('red');
+        enterButton.on('pointerover', () => {
+            enterButton.setColor('red');
             setCustomCursor(this,redCursor);
-            rouletteButton.setStroke('black', 6);
+            enterButton.setStroke('black', 6);
             star.setVisible(true);
-            star.x = rouletteButton.x -30;
-            star.y = rouletteButton.y +20;
+            star.x = enterButton.x -30;
+            star.y = enterButton.y +20;
         });
 
-        rouletteButton.on('pointerout', () => {
-            rouletteButton.setColor('white');
+        enterButton.on('pointerout', () => {
+            enterButton.setColor('white');
             setCustomCursor(this,blueCursor);
-            rouletteButton.setStroke('blue',1);
+            enterButton.setStroke('blue',1);
             star.setVisible(false);
 
         });
+
+
+
+
+
+        // Roulette Button
+        // const rouletteButton = this.add.text(this.scale.width * .4,this.scale.height * .3,'Roulette',{fontFamily: 'Ultra',fontSize: '4em',color: 'white'});
+        // rouletteButton.setInteractive();
+        // rouletteButton.on('pointerdown', () => {
+        //     loungeMusic.stop();
+        //     this.scene.start('Roulette');
+        // });
+
+        // rouletteButton.on('pointerover', () => {
+        //     rouletteButton.setColor('red');
+        //     setCustomCursor(this,redCursor);
+        //     rouletteButton.setStroke('black', 6);
+        //     star.setVisible(true);
+        //     star.x = rouletteButton.x -30;
+        //     star.y = rouletteButton.y +20;
+        // });
+
+        // rouletteButton.on('pointerout', () => {
+        //     rouletteButton.setColor('white');
+        //     setCustomCursor(this,blueCursor);
+        //     rouletteButton.setStroke('blue',1);
+        //     star.setVisible(false);
+
+        // });
 
         // Blackjack Button
         const blackjackButton = this.add.text(this.scale.width * .4,this.scale.height * .45,'Blackjack',{fontFamily: 'Ultra',fontSize: '4em',color: 'white'});
@@ -287,6 +318,61 @@ class Lounge extends ConfigureScene {
     }
 
 }
+
+
+class Lounge extends ConfigureScene {
+    constructor() {
+        super('Lounge');
+    }
+    create(){
+        setCustomCursor(this,blueCursor);
+        this.add.text(this.scale.width * .4,this.scale.height * .05,'Lounge',{fontFamily: 'Ultra',fontSize: '4em',color: 'white'});
+    }
+    update(){
+
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 class Roulette extends ConfigureScene {
     constructor() {
@@ -438,7 +524,7 @@ var config = {
         width: '100%',  // Set the width of the game to 100% of the parent container
         height: '100%'  // Set the height of the game to 100% of the parent container
     },
-    scene: [ConfigureScene,Lounge,Roulette,Blackjack]  // Add your scene to the configuration
+    scene: [ConfigureScene,Menu,Lounge,Roulette,Blackjack]  // Add your scene to the configuration
 };
 
 var game = new Phaser.Game(config);
